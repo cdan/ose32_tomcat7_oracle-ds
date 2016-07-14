@@ -125,7 +125,7 @@ function inject_datasources() {
         driver="org.postgresql.Driver"
       elif [ "$db" = "ORACLE" ]; then
         driver="oracle.jdbc.OracleDriver"
-        url="jdbc:oracle:thin:@(description=(address=(host=$(find_env "${service}_SERVICE_HOST"))(protocol=tcp)(port=$(find_env "${service}_SERVICE_PORT"))) (connect_data=(service_name=$database)))" 
+        url="jdbc:oracle:thin:@(description=(address=(host=$(find_env "${service}_SERVICE_HOST"))(protocol=tcp)(port=$(find_env "${service}_SERVICE_PORT")))(connect_data=(service_name=$database)))" 
       fi
 
       datasources="$datasources$(generate_datasource $jndi $username $password $driver $url)\n\n"
